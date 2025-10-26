@@ -13,3 +13,7 @@ models:
     description: "Oliver Store Dimension"
   - name: fact_sales
     description: "Oliver Sales Fact"
+  - name: fact_certification
+    description: "Oliver Certification Fact"
+  - name: stg_customer_service_interactions
+    description: "Oliver Staging File for Certification Fact"
