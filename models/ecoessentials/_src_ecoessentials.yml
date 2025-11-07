@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: ecoessentials_transactional
+    database: CHRISTIANKERNS
+    schema: ECOESSENTIALS_TRANSACTIONAL_DB
+    tables:
+      - name: customer
+      - name: orders  
+        identifier: "\"ORDER\"" 
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
+
+  - name: ecoessentials_marketing
+    database: CHRISTIANKERNS
+    schema: ECOESSENTIALS_MARKETING_EMAILS
+    tables:
+      - name: marketing_emails
