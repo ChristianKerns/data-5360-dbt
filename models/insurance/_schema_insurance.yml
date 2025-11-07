@@ -3,9 +3,9 @@ version: 2
 models:
   - name: dim_agent
     description: "Insurance Agent Dimension"
-  - name: dim_customer
+  - name: dim_insurance_customer
     description: "Insurance Customer Dimension"
-  - name: dim_date
+  - name: dim_insurance_date
     description: "Insurance Date Dimension"
   - name: dim_policy
     description: "Insurance Policy Dimension"
