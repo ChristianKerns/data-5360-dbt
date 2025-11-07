@@ -15,5 +15,9 @@ models:
     description: "Oliver Sales Fact"
   - name: fact_certification
     description: "Oliver Certification Fact"
+<<<<<<< HEAD
+  - name: stg_customer_service_interactions1
+=======
   - name: stg_oliver_customer_service_interactions
+>>>>>>> 3d78e295d3c74e85514f8bc925967f6cdb5c09af
     description: "Oliver Staging File for Certification Fact"
