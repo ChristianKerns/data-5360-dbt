@@ -9,7 +9,7 @@ select
     p.product_key,
     e.first_name as employee_first_name,
     e.last_name as employee_last_name
-from {{ ref('fact_sales') }} f
+from {{ ref('oliver_fact_sales') }} f
 
 left join {{ ref('oliver_dim_product') }} p
     on f.product_key = p.product_key

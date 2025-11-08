@@ -2,7 +2,11 @@ version: 2
 
 models:
   - name: oliver_dim_product
-    description: "Oliver Product Dimension"
+    description: "oliver Product Dimension"
+    columns:
+      - name: product_key
+        tests:
+          - unique
   - name: oliver_dim_customer
     description: "Oliver Customer Dimension"
   - name: oliver_dim_date
@@ -13,7 +17,32 @@ models:
     description: "Oliver Store Dimension"
   - name: oliver_fact_sales
     description: "Oliver Sales Fact"
+    columns:
+      - name: product_key
+        description: "A foreign key to the product dimension"
+        tests:
+          - not_null
   - name: fact_certification
     description: "Oliver Certification Fact"
+    columns:
+      - name: employee_key
+        tests:
+          - relationships:
+              to: ref('oliver_dim_employee') # the model you want to compare to
+              field: employee_key # the field on the model you want to compare to
   - name: stg_oliver_customer_service_interactions
     description: "Oliver Staging File for Certification Fact"
+    columns:
+      - name: certification_name
+        tests:
+          - accepted_values:
+              values:
+                - "Leadership and Coaching"
+                - "Point of Sale Operations"
+                - "Inventory Management"
+                - "Conflict Resolution"
+                - "Strategic Retail Operations"
+                - "Workplace Safety"
+                - "Product Knowledge Level 2"
+                - "Cash Handling and Security"
+                - "Customer Service Excellence"
