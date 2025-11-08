@@ -3,9 +3,9 @@ version: 2
 models:
   - name: dim_agent
     description: "Insurance Agent Dimension"
-  - name: dim_insurance_customer
+  - name: dim_customer
     description: "Insurance Customer Dimension"
-  - name: dim_insurance_date
+  - name: dim_date
     description: "Insurance Date Dimension"
   - name: dim_policy
     description: "Insurance Policy Dimension"
@@ -20,7 +20,6 @@ models:
         description: "A foreign key to the policy dimension"
         tests:
           - not_null
-    description: "Insurance Claim Fact"
   - name: stg_customer_service_interactions
     description: |
       Staging model for customer service interactions.
