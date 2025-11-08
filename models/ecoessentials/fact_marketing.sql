@@ -43,9 +43,9 @@ SELECT
     f.email_sent_flag,
     cc.conversion_flag
 FROM marketing_base f
-LEFT JOIN {{ ref('dim_customer') }} c
+LEFT JOIN {{ ref('dim_customers') }} c
     ON f.customer_id = c.customer_key
-LEFT JOIN {{ ref('dim_date') }} d
+LEFT JOIN {{ ref('dim_dates') }} d
     ON DATE(f.eventtimestamp) = d.date_day
 LEFT JOIN customer_conversion cc
     ON f.customer_id = cc.customer_key
