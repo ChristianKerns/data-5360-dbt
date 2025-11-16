@@ -3,15 +3,46 @@ version: 2
 models:
   - name: dim_customers
     description: "EcoEssentials Customer Dimension"
+    columns:
+      - name: customer_key
+        tests:
+          - unique
   - name: dim_product
     description: "EcoEssentials Product Dimension"
+    columns:
+      - name: product_key
+        tests:
+          - not_null
   - name: dim_order
     description: "EcoEssentials Order Dimension"
+    columns:
+      - name: order_key
+        tests:
+          - unique
   - name: dim_campaign
     description: "EcoEssentials Campaign Dimension"
+    columns:
+      - name: campaign_discount
+        tests:
+          - accepted_values:
+              values: ['0.10', '0.15', '0.20', '0.25', '0.30', '0.35']
   - name: dim_dates
     description: "EcoEssentials Date Dimension"
+    columns:
+      - name: date_key
+        tests:
+          - not_null
   - name: fact_sales
     description: "EcoEssentials Sales Fact Table"
+    columns:
+      - name: customer_key
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_key
   - name: fact_marketing
     description: "EcoEssentials Marketing Events Fact"
+    columns:
+      - name: email_event_key
+        tests:
+          - unique
