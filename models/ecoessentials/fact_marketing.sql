@@ -5,7 +5,7 @@ WITH marketing_base AS (
         e.emaileventid AS email_event_key,
         e.emailid,
         e.campaignid,
-        e.subscriberid AS customer_id,
+        e.SUBSCRIBERID,
         e.eventtype,
         e.eventtimestamp,
         CASE 
@@ -24,7 +24,7 @@ customer_conversion AS (
             WHEN COUNT(o.order_id) > 0 THEN 1
             ELSE 0
         END AS conversion_flag
-    FROM {{ ref('dim_customer') }} c
+    FROM {{ ref('dim_customers') }} c
     LEFT JOIN {{ source('ecoessentials_transactional', 'orders') }} o
         ON o.customer_id = c.customer_key
     GROUP BY c.customer_key
@@ -34,7 +34,7 @@ SELECT
     f.email_event_key,
     f.emailid,
     f.campaignid,
-    f.customer_id,
+    f.SUBSCRIBERID,
     d.date_key,
     d.date_day,
     d.month_of_year,
@@ -44,8 +44,8 @@ SELECT
     cc.conversion_flag
 FROM marketing_base f
 LEFT JOIN {{ ref('dim_customers') }} c
-    ON f.customer_id = c.customer_key
+    ON f.SUBSCRIBERID = c.customer_key
 LEFT JOIN {{ ref('dim_dates') }} d
     ON DATE(f.eventtimestamp) = d.date_day
 LEFT JOIN customer_conversion cc
-    ON f.customer_id = cc.customer_key
+    ON f.SUBSCRIBERID = cc.customer_key
